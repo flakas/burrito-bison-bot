@@ -7,17 +7,17 @@ import time
 class Vision:
     def __init__(self):
         self.static_templates = {
-            'left-goalpost': '/home/flakas/code/burrito_bison/assets/left-goalpost.png',
-            'bison-head': '/home/flakas/code/burrito_bison/assets/bison-head.png',
-            'pineapple-head': '/home/flakas/code/burrito_bison/assets/pineapple-head.png',
-            'bison-health-bar': '/home/flakas/code/burrito_bison/assets/bison-health-bar.png',
-            'pineapple-health-bar': '/home/flakas/code/burrito_bison/assets/pineapple-health-bar.png',
-            'cancel-button': '/home/flakas/code/burrito_bison/assets/cancel-button.png',
-            'filled-with-goodies': '/home/flakas/code/burrito_bison/assets/filled-with-goodies.png',
-            'next-button': '/home/flakas/code/burrito_bison/assets/next-button.png',
-            'tap-to-continue': '/home/flakas/code/burrito_bison/assets/tap-to-continue.png',
-            'unlocked': '/home/flakas/code/burrito_bison/assets/unlocked.png',
-            'full-rocket': '/home/flakas/code/burrito_bison/assets/full-rocket.png'
+            'left-goalpost': 'assets/left-goalpost.png',
+            'bison-head': 'assets/bison-head.png',
+            'pineapple-head': 'assets/pineapple-head.png',
+            'bison-health-bar': 'assets/bison-health-bar.png',
+            'pineapple-health-bar': 'assets/pineapple-health-bar.png',
+            'cancel-button': 'assets/cancel-button.png',
+            'filled-with-goodies': 'assets/filled-with-goodies.png',
+            'next-button': 'assets/next-button.png',
+            'tap-to-continue': 'assets/tap-to-continue.png',
+            'unlocked': 'assets/unlocked.png',
+            'full-rocket': 'assets/full-rocket.png'
         }
 
         self.templates = { k: cv2.imread(v, 0) for (k, v) in self.static_templates.items() }
