@@ -13,12 +13,12 @@ class Game:
             self.vision.refresh_frame()
             if self.state == 'not started' and self.round_starting('bison'):
                 print('Round needs to be started, launching bison')
-                self.launch_player('bison')
+                self.launch_player()
                 self.state = 'started'
             if self.state == 'not started' and self.round_starting('pineapple'):
                 print('Round needs to be started, launching pineapple')
                 try:
-                    self.launch_player('pineapple')
+                    self.launch_player()
                     self.state = 'started'
                 except Exception as ex:
                     print('Failed to find pineapple character')
@@ -44,15 +44,18 @@ class Game:
         matches = self.vision.find_template('%s-health-bar' % player)
         return np.shape(matches)[1] >= 1
 
-    def launch_player(self, player):
-        matches = self.vision.scaled_find_template('left-goalpost', threshold=0.75, scales=[1.05, 1.04, 1.03, 1.02, 1.01, 1.0, 0.99, 0.98, 0.97, 0.96, 0.95])
+    def launch_player(self):
+        # Try multiple sizes of goalpost due to perspective changes for
+        # different opponents
+        scales = [1.2, 1.1, 1.05, 1.04, 1.03, 1.02, 1.01, 1.0, 0.99, 0.98, 0.97, 0.96, 0.95]
+        matches = self.vision.scaled_find_template('left-goalpost', threshold=0.75, scales=scales)
         print(matches)
         x = matches[1][0]
         y = matches[0][0]
 
         self.controller.left_mouse_drag(
             (x, y),
-            (x-200, y+30)
+            (x-200, y+10)
         )
 
         time.sleep(0.5)
