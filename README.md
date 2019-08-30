@@ -44,5 +44,16 @@ As it is right now, the bot can work semi-autonomously, requiring help to start 
 - Create a virtual environment using system packages: `virtualenv -p python3 --system-site-packages venv`
 - Use virtualenv with `source venv/bin/activate`
 - Install required packages: `pip install -r requirements.txt`
-- Run the bot with `python run.py`
 
+## Running the bot
+
+1) Run a resized version of Burrito Bison in your browser with `cd website && python -m SimpleHTTPServer 8080`
+2) Open up `http://localhost:8080` in your browser
+3) Run the bot with `python run.py`
+4) Switch to the browser and ensure that the game screen is fully visible on your screen in the top left corner.
+5) Go through the interfaces manually and put the game into a state where you would launch the bison from the Ring. The bot should pick it up and launch the hero from there.
+
+Tips:
+
+- This bot can no longer be run on Kongregate's website, you have to run a resized version of the game locally. This bot was tailored for Burrito Bison game to be run in 1173x660 px game screen, however Kongregate has since changed their design slightly, running the game in 1280x768 resolution, which throws off scaling in image templates.
+- The bot is configured to work only with 1920x1080 screen resolution. If you have an HD (1366x768) or a 4K monitor, you may need to play around with game screen placement, or change observed area in `vision.py`
